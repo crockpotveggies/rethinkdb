@@ -342,7 +342,7 @@ describe("JavaScript Callback style", function() {
 
             it("errors with bad table", function(done) {
                 reqlConn.use('rethinkdb');
-                r.table('non_existent').run(reqlConn, givesError("ReqlOpFailedError", "Table `rethinkdb.non_existent` does not exist", done));
+                r.table('non_existent').run(reqlConn, givesError("ReqlOpFailedError", "Table `rethinkdb.non_existent` does not exist.", done));
             });
         });
     });
@@ -378,7 +378,7 @@ describe("JavaScript Callback style", function() {
         });
 
         it("handles the db optarg", function(done){
-            r.tableCreate('dbOptarg').run(reqlConn, {db:'dbOptarg'}).error(givesError('ReqlOpFailedError', 'Database `dbOptarg` does not exist', done))
+            r.tableCreate('dbOptarg').run(reqlConn, {db:'dbOptarg'}).error(givesError('ReqlOpFailedError', 'Database `dbOptarg` does not exist.', done))
         });
 
         describe('with a table', function() {
@@ -426,13 +426,13 @@ describe("JavaScript Callback style", function() {
 
                 it("errors with \"default\" durability", function(done) {
                     tbl.insert({data:"5"}).run(reqlConn, {durability: "default"},
-                        givesError("ReqlQueryLogicError", 'Durability option `default` unrecognized (options are "hard" and "soft")', done)
+                        givesError("ReqlQueryLogicError", 'Durability option `default` unrecognized (options are "hard" and "soft").', done)
                     );
                 });
 
                 it("errors with wrong durability", function(done) {
                     tbl.insert({data:"5"}).run(reqlConn, {durability: "wrong"},
-                        givesError("ReqlQueryLogicError", 'Durability option `wrong` unrecognized (options are "hard" and "soft")', done)
+                        givesError("ReqlQueryLogicError", 'Durability option `wrong` unrecognized (options are "hard" and "soft").', done)
                     );
                 });
             });
